@@ -10,7 +10,7 @@ def is_leap_year(year):
     return False
 
 
-def days_left(year, month, day):
+def days_left_in_year(year, month, day):
     """
     Computes the days left in a given year starting from the input date
     """
@@ -59,5 +59,39 @@ def days_left(year, month, day):
     return result
 
 
-       
-        
+def days_passed_in_year(year, month, day):
+    """
+    Takes a date and computs the number of days that have passed since Jan 1
+    """
+    result = day
+    if month != 1:
+        while month > 1:
+            month = month - 1
+            if month == 1:
+                result = result + 31
+            elif month == 2:
+                if is_leap_year(year):
+                    result = result + 29
+                else:
+                    result = result + 28
+            elif month == 3:
+                result = result + 31
+            elif month == 4:
+                result = result + 30
+            elif month == 5:
+                result = result + 31
+            elif month == 6:
+                result = result + 30
+            elif month == 7:
+                result = result + 31
+            elif month == 8:
+                result = result + 31
+            elif month == 9:
+                result = result + 30
+            elif month == 10:
+                result = result + 31
+            elif month == 11:
+                result = result + 30                   
+    return result
+
+

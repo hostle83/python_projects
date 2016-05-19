@@ -27,8 +27,6 @@ def dateIsBefore(year1, month1, day1, year2, month2, day2):
             return day1 < day2
     return False
 
-print dateIsBefore(2012, 12,12,2012, 12, 13)
-
 
 def daysBetweenDates(year1, month1, day1, year2, month2, day2):
     """Returns the number of days between year1/month1/day1
@@ -36,7 +34,7 @@ def daysBetweenDates(year1, month1, day1, year2, month2, day2):
        in Gregorian calendar, and the first date is not after
        the second."""
     counter = 0
-    while (year1, month1, day1) != (year2, month2, day2):
+    while dateIsBefore(year1, month1, day1, year2, month2, day2):
         year1, month1, day1 = nextDay (year1, month1, day1)
         counter = counter + 1
     return counter

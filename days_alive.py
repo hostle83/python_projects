@@ -23,7 +23,8 @@ def daysInMonth(year, month):
 
 def nextDay(year, month, day):
     """Simple version: assume every month has 30 days"""
-    if day < 30:
+    assert day <= daysInMonth(year, month)
+    if day < daysInMonth(year, month):
         return year, month, day + 1
     else:
         if month == 12:
@@ -31,7 +32,7 @@ def nextDay(year, month, day):
         else:
             return year, month + 1, 1
 
-        
+
 def dateIsBefore(year1, month1, day1, year2, month2, day2):
     """
     Returns True if year1, month1, day1 is before year2, month2, day2;

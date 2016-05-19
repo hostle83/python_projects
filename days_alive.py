@@ -2,6 +2,21 @@
 
 
 
+
+def isLeapYear(year):
+    if year % 4 == 0 and year % 100 != 0 or year % 400 == 0:
+        return True
+    return False
+
+print isLeapYear(2000)
+print isLeapYear(1000)
+print isLeapYear(1999)
+print isLeapYear(1700)
+print isLeapYear(2016)
+
+#def daysInMonth(year, month):
+    
+
 def nextDay(year, month, day):
     """Simple version: assume every month has 30 days"""
     if day < 30:
@@ -33,7 +48,7 @@ def daysBetweenDates(year1, month1, day1, year2, month2, day2):
        and year2/month2/day2. Assumes inputs are valid dates
        in Gregorian calendar, and the first date is not after
        the second."""
-    assert dateIsBefore(year1, month1, day1, year2, month2, day2)
+    assert not dateIsBefore(year2, month2, day2, year1, month1, day1)
     counter = 0
     while dateIsBefore(year1, month1, day1, year2, month2, day2):
         year1, month1, day1 = nextDay (year1, month1, day1)
@@ -41,5 +56,4 @@ def daysBetweenDates(year1, month1, day1, year2, month2, day2):
     return counter
 
 
-print daysBetweenDates(2014, 1, 24, 2013, 6, 29)
-print daysBetweenDates(1912, 3, 29, 2012, 3, 29)
+

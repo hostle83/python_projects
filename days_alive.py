@@ -8,14 +8,18 @@ def isLeapYear(year):
         return True
     return False
 
-print isLeapYear(2000)
-print isLeapYear(1000)
-print isLeapYear(1999)
-print isLeapYear(1700)
-print isLeapYear(2016)
 
-#def daysInMonth(year, month):
-    
+def daysInMonth(year, month):
+    assert month < 13
+    if month == 2:
+        if isLeapYear(year):
+            return 29
+        return 28
+    if month == 1 or month == 3 or month == 5 or month == 7 or month == 8 or month == 10 or month == 12:
+        return 31
+    if month == 4 or month == 6 or month == 9 or month == 11:
+        return 30
+        
 
 def nextDay(year, month, day):
     """Simple version: assume every month has 30 days"""

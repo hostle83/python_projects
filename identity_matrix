@@ -1,0 +1,28 @@
+def is_identity_matrix(matrix):
+    """ 
+    Takes a square matrix as input and returns 
+    True if the Matrix is an identity matrix,
+    False otherwise
+    """
+    # check if the matrix is square
+    for each in matrix:                 
+        if len(each) != len(matrix):
+            return False
+    
+    row = 0
+    # iterate through the rows
+    while row < len(matrix):
+        col = 0
+        # iterate through the columns
+        while col < len(matrix):
+            # check if the entry at the diagonal positons is 1
+            if row == col:
+                if matrix[row][col] != 1:
+                    return False
+            # check if all other entries are 0
+            else:
+                if matrix[row][col] != 0:
+                    return False
+            col = col + 1
+        row = row + 1
+    return True

@@ -1,4 +1,4 @@
-# define a procedure that takes in a string of numbers from 1-9 and
+# defines a procedure that takes in a string of numbers from 1-9 and
 # outputs a list with the following parameters:
 # Every number in the string should be inserted into the list.
 # If a number x in the string is less than or equal 
@@ -7,14 +7,6 @@
 # sublist until reaching a number z that
 # is greater than the number y. 
 # Then add this number z to the normal list and continue.
-
-# add first number to result list
-# take a look at next number
-    # if next number <= to previous:
-        # store in a second list
-    # else:
-        # concatenate lists result and second
-        # append to result list
 
 def numbers_in_lists(string):
     """

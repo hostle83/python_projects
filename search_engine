@@ -2,23 +2,9 @@ def add_to_index(index,keyword,url):
   """
   Takes a list and two strings as input and returns the modified input list.
   """
-    # if the index is not empty
-    if index:
-        # go through each element of the index list
-        for each in index:
-            # check if the input keyword is already in the index list. If so...
-            if keyword in each:
-                # get index position of keyword
-                idx = index.index(each)
-                # append the URL to the list associated with that keyword
-                index[idx][1].append(url)
-                break
-            # if the input keyword is not yet in the index list
-            else:
-                # append the keyword with URL to the index list
-                index.append([keyword, [url]])
-                break
-    # if the index is empty, simply append to index list
-    else:
-        index.append([keyword, [url]])
-    return index
+    for entry in index:
+      if entry[0] == keyword:
+        entry[1].append(url)
+        return
+    index.append([keyword, [url]])
+    

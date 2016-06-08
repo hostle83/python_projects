@@ -25,4 +25,4 @@ def add_page_to_index(index,url,content):
   Modifies the index by taking the contents of a page (content),
   adding each word to the index along with the url
   """
-    [add_to_index(index, each, url) for each in content.split()]
+  [add_to_index(index, each, url) for each in content.split()]

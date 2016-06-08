@@ -3,21 +3,21 @@ def add_to_index(index,keyword,url):
   Modifies index by adding url to a keyword found in the index. 
   If the keyword is not yet in the index, adds [keyword, [url]] to the index
   """
-    for entry in index:
-      if entry[0] == keyword:
-        entry[1].append(url)
-        return
-    index.append([keyword, [url]])
+  for entry in index:
+    if entry[0] == keyword:
+      entry[1].append(url)
+      return
+  index.append([keyword, [url]])
     
 
 def lookup(index,keyword):
   """
   Returns urls associated with the input keyword
   """
-    for entry in index:
-        if entry[0] == keyword:
-            return entry[1]
-    return []
+  for entry in index:
+      if entry[0] == keyword:
+          return entry[1]
+  return []
     
     
 def add_page_to_index(index,url,content):

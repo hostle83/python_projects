@@ -1,6 +1,7 @@
 def add_to_index(index,keyword,url):
   """
-  Takes a list and two strings as input and returns the modified input list.
+  Modifies index by adding url to a keyword found in the index. 
+  If the keyword is not yet in the index, adds [keyword, [url]] to the index
   """
     for entry in index:
       if entry[0] == keyword:

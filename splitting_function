@@ -1,0 +1,25 @@
+def split_string(source,splitlist):
+    """
+    Takes two strings as input and returns a list 
+    of strings that break the first string up by the 
+    characters in the second string
+    """
+    # initialize variables 
+    result = []
+    idx = 0
+    substring = ''
+    # iteration through source string
+    while idx < len(source):
+        # if character at position idx is not in the splitlist, store that character and move on
+        if source[idx] not in splitlist:
+            substring = substring + source[idx]
+            idx = idx + 1
+        # otherwise, append the stored list (substring) to result and move on
+        else:
+            if substring:
+                result.append(substring)
+                substring = ''
+            idx = idx + 1
+    if substring:
+        result.append(substring)
+    return result

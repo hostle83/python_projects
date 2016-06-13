@@ -49,6 +49,13 @@ quite good at  <a href="http://www.udacity.com/cs101x/kicking.html">kicking</a>.
         return ""
     return ""
 
+def union(a, b):
+    """
+    appends all elements of b to a
+    """
+    for e in b:
+        if e not in a:
+            a.append(e)
 
 def lookup(index,keyword):
   """

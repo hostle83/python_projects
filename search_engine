@@ -1,3 +1,13 @@
+def record_user_click(index,keyword,url):
+  """
+  Simulates user clicks
+  """
+    urls = lookup(index, keyword)
+    if urls:
+        for entry in urls:
+            if entry[0] == url:
+                entry[1] = entry[1] + 1
+
 def add_to_index(index,keyword,url):
   """
   Modifies index by adding url to a keyword found in the index. 

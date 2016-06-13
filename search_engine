@@ -4,10 +4,14 @@ def add_to_index(index,keyword,url):
   If the keyword is not yet in the index, adds [keyword, [url]] to the index
   """
   for entry in index:
-    if entry[0] == keyword:
-      entry[1].append(url)
-      return
-  index.append([keyword, [url]])
+        if entry[0] == keyword:
+            for each in entry[1]:
+                if url == each[0]:
+                    return
+            entry[1].append([url, 0])
+            return
+    # not found, add new keyword to index
+    index.append([keyword, [[url, 0]]])
     
 
 def lookup(index,keyword):

@@ -103,6 +103,9 @@ def find_eulerian_tour(graph):
         if ending_node in next_pos_nodes:
             next_pos_nodes.remove(ending_node)
         next_n = next_node(next_pos_nodes, graph_as_dict)
+        # start over if at dead end
+        if next_n == None:
+            return find_eulerian_tour(graph)
         result.append(next_n)
         
         # remove the connection between current node and next node from the graph

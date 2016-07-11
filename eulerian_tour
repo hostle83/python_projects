@@ -1,0 +1,117 @@
+"""
+Given a list of tuples (= edges between nodes), determine if this list has a eulerian tour. 
+If it does, return the tour
+"""
+
+
+import random
+
+
+def turn_graph_to_dict(graph):
+    """
+    Turn the input graph, a list of tuples, into
+    a dictionary with node:(degree of node) as key:value pair
+    """
+    node_dict = {}
+    for nodes in graph:
+        for node in nodes:
+            if node not in node_dict:
+                node_dict[node] = 1
+            else:
+                node_dict[node] += 1
+    return node_dict
+
+
+def has_eulerian_tour(dictionary):
+    """
+    Based on the degree of each node in a given graph,
+    determine if a Eulerian Tour through the graph is possible (True)
+    or not (False)
+    """
+    count = 0
+    for node in dictionary:
+        # if a node has only one edge, Eulerian Tour is not possible
+        if dictionary[node] == 1:
+            return False
+        # if the node has an odd # of edges, check if the # of odd-degree nodes in the
+        # graph is even. If not, Eulerian Tour is not possible
+        if dictionary[node] % 2 == 1:
+            count += 1
+    if count % 2 == 0:
+        return True
+    return False
+
+
+def next_node(nodes, dictionary):
+    """
+    From a list of nodes, pick the node with lowest degree
+    """
+    result = random.choice(nodes)
+    for node in nodes:
+        if dictionary[node] < dictionary[result]:
+            result = node
+    return result
+
+
+def sort_graph(graph):
+    """
+    Sorts the nodes of an input graph so that (x, y) fulfills x < y
+    """
+    sorted_graph = []
+    for node in graph:
+        sorted_graph.append(tuple(sorted((node))))
+    return sorted_graph
+
+
+def find_eulerian_tour(graph):
+
+    """
+    Find any Eulerian Tour through a given graph
+    """
+    result = []
+    # check if Eulerian Tour is possible given the nodes and degree of nodes
+    graph_as_dict = turn_graph_to_dict(graph)
+    if not has_eulerian_tour(graph_as_dict):
+        return result
+    
+    # sort the graph
+    s_graph = sort_graph(graph)
+   
+    # pick a random starting node with lowest # of edges and add to result
+    # Starting node is also ending node of the tour
+    next_pos_nodes = []
+    for nodes in s_graph:
+        for node in nodes:
+            if node not in next_pos_nodes:
+                next_pos_nodes.append(node)
+    
+    current_node = next_node(next_pos_nodes, graph_as_dict)
+    ending_node = current_node
+    result.append(current_node)
+    
+    # look at connections of starting node and pick a random connecting node with low # of edges
+    while len(s_graph) > 1:
+        # build list of all connecting nodes with current node
+        next_pos_nodes = []
+        for nodes in s_graph:
+            if current_node in nodes:
+                for node in nodes:
+                    if node != current_node:
+                        next_pos_nodes.append(node)
+        # from next_pos_nodes, pick a random next node that's not the starting node 
+        # add to result
+        if ending_node in next_pos_nodes:
+            next_pos_nodes.remove(ending_node)
+        next_n = next_node(next_pos_nodes, graph_as_dict)
+        result.append(next_n)
+        
+        # remove the connection between current node and next node from the graph
+        s_graph.remove(tuple(sorted((current_node, next_n))))
+        
+        # update the current node
+        current_node = next_n
+       
+    # add starting/ending node to result list
+    result.append(ending_node)
+    return result
+

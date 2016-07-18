@@ -1,0 +1,10 @@
+def sumnums(sentence): 
+    """
+    Simple procedure using regular expressions that returns 
+    the sum of all numbers found in the input string
+    """
+    regex = r"[0-9]+"
+    sum = 0
+    for number in re.findall(regex, sentence):
+        sum += int(number)
+    return sum

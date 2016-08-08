@@ -1,0 +1,20 @@
+def is_perfect(n):
+    """
+    Determines if a given number n is a perfect number or not
+    """
+    divs = []
+    # Find all proper divisors of n
+    for idx in range(1,n):
+        if n % idx == 0:
+            divs.append(idx)
+    # determine if the sum of proper divisors is equal to n
+    return n == sum(divs)
+
+def main(n):
+    """
+    Prints out all perfect numbers from 1 to n
+    """
+    for idx in range(1, n + 1):
+        if is_perfect(idx):
+            print (idx)
+    return

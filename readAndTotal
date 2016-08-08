@@ -1,0 +1,40 @@
+"""
+Compute the total of a collection of numbers entered by the user.
+The user will enter a blank line to indicate that no further numbers
+will be entered
+"""
+
+def readAndTotal():
+    """
+    Compute the total of all the numbers entered by the user until the user
+    enters a blank line. Return the total of the entered values
+    """
+    
+    # Read a value from the user
+    user_input = input("Enter a number (enter to quit): ")
+
+    # Base case: The user enters a blank line so the total is 0
+    if user_input == "":
+        return 0
+
+    #Recursive case: Convert the current input value to a number and recur
+    else:
+        return float(user_input) + readAndTotal()
+
+
+def main():
+    """
+    Read a collection of numbers from the user and display the total
+    """
+
+    # Read the values from the user and compute the total
+    total = readAndTotal()
+
+    # Display the result
+    print("The total of all these values is", total)
+
+
+# Call the main function
+main ()
+
+
